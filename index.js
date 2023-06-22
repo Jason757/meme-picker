@@ -1,24 +1,40 @@
 import { catsData } from '/data.js'
 
 const emotionRadios = document.getElementById('emotion-radios')
+const getImageBtn = document.getElementById('get-image-btn')
+const gifsOnlyOption = document.getElementById('gifs-only-option');
+
 
 emotionRadios.addEventListener('change', highlightCheckedOption)
 
+getImageBtn.addEventListener('click', getMatchingCatsArray)
+
 function highlightCheckedOption(e){
-/*
-Challenge:
-1. Create an array of all items that have 
-   the "radio" class.
-2. Iterate over the array and remove the 
-   "highlight" class from each one.
-*/ 
     const radios = document.getElementsByClassName('radio')
-    
     for (let radio of radios){
         radio.classList.remove('highlight')
     }
-
     document.getElementById(e.target.id).parentElement.classList.add('highlight')
+} 
+
+function getMatchingCatsArray(){
+    const isGifsOnlyOptionChecked = gifsOnlyOption.checked
+    console.log(isGifsOnlyOptionChecked)
+/*
+Challenge:
+1. Take control of the gifs only option checkbox.
+2. Set up a const in getMatchingCatsArray to store 
+   a boolean which will be set to true if the 
+   "gifs only" option is checked and false if it's
+   not. (Think what a good name for this const would 
+   be.)
+3. Log it out to check it's working.
+*/
+    if(document.querySelector('input[type="radio"]:checked')) {
+        const selectedEmotion = document.querySelector('input[type="radio"]:checked').value
+        console.log(selectedEmotion)
+    }
+    
 }
 
 function getEmotionsArray(cats){
